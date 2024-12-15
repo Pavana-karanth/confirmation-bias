@@ -4,6 +4,15 @@ import re
 import joblib
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Use specific origins in production for security
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
+
 # Initialize FastAPI app
 app = FastAPI(
     title="Confirmation Bias Detector API",
