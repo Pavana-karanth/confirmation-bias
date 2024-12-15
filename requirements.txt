@@ -1,5 +1,6 @@
 fastapi[all]
 starlette
+uvicorn[standard]
 joblib
 vaderSentiment
 scikit-learn
