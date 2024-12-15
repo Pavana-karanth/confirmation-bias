@@ -14,7 +14,7 @@ export function Footer({ className, ...props }: FooterProps) {
       {...props}
     >
       <div className="container mx-auto px-4 py-6 text-center text-gray-300">
-        <p>© 2023 BiasSage - Confirmation Bias Detector. All rights reserved.</p>
+        <p>© 2024 BiasSage - Confirmation Bias Detector. All rights reserved.</p>
         <p className="mt-2 text-sm">Developed as part of a mini project to promote critical thinking and self-awareness.</p>
       </div>
     </footer>
