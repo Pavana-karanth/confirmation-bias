@@ -3,6 +3,7 @@ from pydantic import BaseModel
 import re
 import joblib
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from fastapi.middleware.cors import CORSMiddleware
 
 # Initialize FastAPI app
 app = FastAPI(
