@@ -17,6 +17,7 @@ export default function DetectPage() {
   const [result, setResult] = useState<AnalysisResult | null>(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -34,8 +35,9 @@ export default function DetectPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    setError(null)
     try {
-      const response = await fetch('/', {
+      const response = await fetch('https://confirmation-bias.onrender.com/analyze-bias', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,18 +46,15 @@ export default function DetectPage() {
       })
 
       if (!response.ok) {
-        throw new Error('Network response was not ok')
+        throw new Error(`HTTP error! status: ${response.status}`)
       }
 
       const data: AnalysisResult = await response.json()
       setResult(data)
     } catch (error) {
       console.error('Error:', error)
-      setResult({
-        bias_level: 'Error',
-        reason: 'Failed to analyze text. Please try again.',
-        sentiment_score: 0,
-      })
+      setError('Failed to analyze text. Please try again.')
+      setResult(null)
     } finally {
       setIsLoading(false)
     }
@@ -84,6 +83,16 @@ export default function DetectPage() {
             {isLoading ? 'Analyzing...' : 'Analyze'}
           </Button>
         </form>
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mt-8 p-6 bg-red-100 rounded-lg shadow-lg border-2 border-red-200"
+          >
+            <p className="text-lg text-red-700">{error}</p>
+          </motion.div>
+        )}
         {result && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -101,4 +110,3 @@ export default function DetectPage() {
     </div>
   )
 }
-
