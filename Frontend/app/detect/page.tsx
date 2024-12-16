@@ -73,7 +73,7 @@ export default function DetectPage() {
             placeholder="Enter your text here..."
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="h-40 bg-white bg-opacity-80 backdrop-blur-sm border-2 border-rose-200 focus:border-purple-300 rounded-lg"
+            className="h-40 bg-white bg-opacity-80 backdrop-blur-sm border-2 border-rose-200 focus:border-purple-300 rounded-lg text-black"
           />
           <Button 
             type="submit" 
