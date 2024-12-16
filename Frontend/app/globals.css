@@ -27,3 +27,8 @@ body {
   animation: gradient-animation 15s ease infinite;
 }
 
+input, textarea {
+  color: black;
+}
+
+
