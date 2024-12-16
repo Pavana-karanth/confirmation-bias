@@ -43,6 +43,7 @@ export default function SignupPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className="text-black"
           />
           <Input
             type="password"
@@ -50,6 +51,7 @@ export default function SignupPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className="text-black"
           />
           <Input
             type="password"
@@ -57,6 +59,7 @@ export default function SignupPage() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            className="text-black"
           />
           <Button type="submit" className="w-full bg-gradient-to-r from-rose-500 to-purple-500 hover:from-rose-600 hover:to-purple-600">
             Sign Up
