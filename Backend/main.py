@@ -3,17 +3,27 @@ from pydantic import BaseModel
 import re
 import joblib
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from fastapi.middleware.cors import CORSMiddleware
 
 # Initialize FastAPI app
 app = FastAPI(
     title="Confirmation Bias Detector API",
-    description="An API to analyze text for signs of confirmation bias.",
-    version="1.0.0",
+    description="An API to analyze text for signs of confirmation bias using Gemini AI.",
+    version="1.1.0",
 )
 
-tfidf_vectorizer = joblib.load('tfidf_vectorizer_3.joblib')
-kmeans_model = joblib.load('kmeans_model_3.joblib')
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Use specific origins in production for security
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
 
+# Load pre-trained models
+tfidf_vectorizer = joblib.load("tfidf_vectorizer_3.joblib")
+kmeans_model = joblib.load("kmeans_model_3.joblib")
 
 # Define the feedback for each cluster
 cluster_feedback = {
@@ -101,4 +111,3 @@ def root():
     Health check endpoint.
     """
     return {"message": "Confirmation Bias Detector API is running!"}
-
