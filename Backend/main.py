@@ -4,6 +4,7 @@ import re
 import joblib
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from fastapi.middleware.cors import CORSMiddleware
+import google.generativeai as genai  # Gemini integration
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -50,6 +51,8 @@ class ResponseModel(BaseModel):
     bias_level: str
     reason: str
     sentiment_score: float
+    #gemini_analysis: str  # Analysis from Gemini
+    #gemini_explanation: str  # Explanation from Gemini
 
 # Function to clean the input text
 def clean_text(text):
@@ -68,6 +71,27 @@ def analyze_sentiment(text):
     scores = vader_analyzer.polarity_scores(text)
     return scores["compound"]
 
+# Function to use Gemini for reasoning
+'''
+def analyze_with_gemini(input_text):
+    """
+    Use Google Gemini to generate reasoning about the input text.
+    """
+    try:
+         
+        # Use the Gemini API for generating the reason behind the sentiment or bias
+        prompt = f"Analyze the following text and detect if there's confirmation bias. provide **only the reason** for the confirmation bias present or not present without any additional context, advice, or explanations. Do not generate any general discussion. The text is: {input_text}"
+        # Authenticate with your Gemini API key
+        genai.configure(api_key="AIzaSyB_FPiUvIUALsLfSgt5rxcbLP_nakezRQ8")  # Replace with your Gemini API key
+
+        # Generate response using Gemini
+        response = genai.GenerativeModel("gemini-2.0-flash-exp").generate_content(input_text)
+        gemini_analysis = response.text
+
+        return gemini_analysis, "Gemini's reasoning is successfully generated."
+    except Exception as e:
+        return "Error", f"Gemini Analysis Failed: {str(e)}"
+        '''
 
 @app.post("/analyze-bias", summary="Analyze text for confirmation bias", response_model=ResponseModel)
 def analyze_bias(input_data: TextInput):
@@ -96,6 +120,7 @@ def analyze_bias(input_data: TextInput):
 
     # Add sentiment analysis result
     sentiment_score = analyze_sentiment(cleaned_text)
+
 
     # Combine results
     return ResponseModel(
