@@ -4,7 +4,7 @@ import re
 import joblib
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from fastapi.middleware.cors import CORSMiddleware
-import google.generativeai as genai  # Gemini integration
+import google.generativeai as genai  # Gemini integratio
 
 # Initialize FastAPI app
 app = FastAPI(
