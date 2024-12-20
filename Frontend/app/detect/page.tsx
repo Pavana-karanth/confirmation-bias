@@ -102,7 +102,6 @@ export default function DetectPage() {
           >
             <h2 className="text-2xl font-semibold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-purple-600">Analysis Result:</h2>
             <p className="text-lg text-gray-700 mb-2">Bias Level: {result.bias_level}</p>
-            <p className="text-lg text-gray-700 mb-2">Reason: {result.reason}</p>
             <p className="text-lg text-gray-700">Sentiment Score: {result.sentiment_score.toFixed(2)}</p>
           </motion.div>
         )}
