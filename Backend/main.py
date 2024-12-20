@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(
     title="Confirmation Bias Detector API",
     description="An API to analyze text for confirmation bias based on sentiment score.",
-    version="3.1.0",
+    version="3.1.1",
 )
 
 # Add CORS middleware
@@ -34,9 +34,9 @@ def determine_bias_level(sentiment_score: float) -> str:
     if -0.2 <= sentiment_score <= 0.2:
         return "Low Confirmation Bias detected"  # Neutral tone
     elif 0.2 < sentiment_score <= 0.5 or -0.5 <= sentiment_score < -0.2:
-        return "Moderate Confirmation Bias seems to be prevalent"  # Mild emotional tone
+        return "Moderate Confirmation Bias detected"  # Mild emotional tone
     else:
-        return "High Confirmation Bias is present"  # Strong emotional tone
+        return "High Confirmation Bias detected"  # Strong emotional tone
 
 # Function to analyze sentiment using VADER
 def analyze_sentiment(text: str) -> float:
@@ -61,7 +61,7 @@ def analyze_bias(input_data: TextInput):
     # Determine bias level
     bias_level = determine_bias_level(sentiment_score)
 
-    # Combine results
+    # Return results with bias level and sentiment score
     return ResponseModel(
         bias_level=bias_level,
         sentiment_score=sentiment_score,
