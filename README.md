@@ -93,8 +93,8 @@ Visit the deployed apps:
 
 This project was developed by:
 
-* [Pavana P. Karanth] (https://github.com/Pavana-karanth)
-* [Safeya Zawath Zakir] (https://github.com/Safeyaz)
+* [Pavana P. Karanth](https://github.com/Pavana-karanth)
+* [Safeya Zawath Zakir](https://github.com/Safeyaz)
 
 > Contributions and suggestions are welcome. Open an issue or submit a PR.
 
