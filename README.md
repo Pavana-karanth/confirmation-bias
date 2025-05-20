@@ -1,7 +1,5 @@
 # Confirmation Bias Detection in Media using NLP
 
----
-
 ## 📚 Table of Contents
 
 * [Introduction](#introduction)
