@@ -110,7 +110,3 @@ This project was developed by:
 
 
 This project is licensed under the **MIT License**.
-
----
-
-Let me know if you want help auto-generating badges, frontend setup steps, or splitting the README for frontend/backend repos!
