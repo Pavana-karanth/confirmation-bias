@@ -55,11 +55,9 @@ The project utilizes the following tools and libraries:
 To run the project locally:
 
 1. **Clone the repository**
-
-   ```bash git clone https://github.com/your-username/confirmation-bias-detector.git ```
+ ```bash git clone https://github.com/your-username/confirmation-bias-detector.git ```
 2. **Navigate to the project directory**
-
-   ```bash cd confirmation-bias-detector ```
+```bash cd confirmation-bias-detector ```
 3. **Install backend dependencies**
    ```bash pip install -r requirements.txt ```
 
@@ -80,13 +78,9 @@ scikit-learn
 
 ## 🚀 Usage
 
-To run the backend service locally:
+To run the backend service locally: ```bash uvicorn main:app --reload ```
 
-```bash uvicorn main:app --reload ```
-
-Once running, test the API by sending a POST request to:
-
-``` http://127.0.0.1:8000/analyze-bias ```
+Once running, test the API by sending a POST request to: ``` http://127.0.0.1:8000/analyze-bias ```
 
 Visit the deployed apps:
 
